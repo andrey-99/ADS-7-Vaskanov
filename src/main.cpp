@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include <chrono>
+#include <iomanip>
 #include "train.h"
 
 int main() {
@@ -16,12 +17,12 @@ int main() {
   auto start1 = std::chrono::high_resolution_clock::now();
   int length1 = train1.getLength();
   auto end1 = std::chrono::high_resolution_clock::now();
-  std::chrono::duration<double> time1 = end1 - start1;
+  auto time1 = std::chrono::duration_cast<std::chrono::microseconds>(end1 - start1);
   
   std::cout << "off" << std::endl;
   std::cout << "length: " << length1 << std::endl;
   std::cout << "operations: " << train1.getOpCount() << std::endl;
-  std::cout << "time: " << time1.count() << "s" << std::endl << std::endl;
+  std::cout << "time: " << time1.count() << " μs" << std::endl << std::endl;
   
 
   Train train2;
@@ -32,12 +33,12 @@ int main() {
   auto start2 = std::chrono::high_resolution_clock::now();
   int length2 = train2.getLength();
   auto end2 = std::chrono::high_resolution_clock::now();
-  std::chrono::duration<double> time2 = end2 - start2;
+  auto time2 = std::chrono::duration_cast<std::chrono::microseconds>(end2 - start2);
   
   std::cout << "random" << std::endl;
   std::cout << "length: " << length2 << std::endl;
   std::cout << "operations: " << train2.getOpCount() << std::endl;
-  std::cout << "time: " << time2.count() << "s" << std::endl << std::endl;
+  std::cout << "time: " << time2.count() << " μs" << std::endl << std::endl;
 
   Train train3;
   count = l;
@@ -47,12 +48,12 @@ int main() {
   auto start3 = std::chrono::high_resolution_clock::now();
   int length3 = train3.getLength();
   auto end3 = std::chrono::high_resolution_clock::now();
-  std::chrono::duration<double> time3 = end3 - start3;
+  auto time3 = std::chrono::duration_cast<std::chrono::microseconds>(end3 - start3);
   
   std::cout << "on" << std::endl;
   std::cout << "length: " << length3 << std::endl;
   std::cout << "operations: " << train3.getOpCount() << std::endl;
-  std::cout << "time: " << time3.count() << "s" << std::endl;
+  std::cout << "time: " << time3.count() << " μs" << std::endl;
 
   return 0;
 }
